@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (3/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+        <img src="{% static 'instructions/shaking.png' %}" class="screenshot">
+        <div>
+          <p>
+            The 5 second timer will begin as soon as you click the button.
+            During this time you will see a 3D scene showing your dice (<span style="color: purple; font-weight: bold">purple</span>)
+            in the dice cup (<span style="color: skyblue; font-weight: bold">blue</span>) through a semi-opaque lid.  As you shake
+            your phone, the dice will move in response to your own movements and you will see and hear it rattle around the dice cup.
+          </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main task
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 3.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/3.png' %}");
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Prolific ID
+{% endblock %}
+
+{% block content %}
+{% comment %}
+    {% formfield player.ProlificID label="My Prolific ID is not removing the space" label_suffix="?"%}
+{% endcomment %}
+
+    <div class="form-group required">
+    {{ form.ProlificID.errors }}
+        <label class="control-label" for="id_ProlificID">My Prolific ID is:</label>
+        <div class="controls  field-ProlificID">
+        {{ form.ProlificID }}
+        </div>
+    </div>    
+
+    {% next_button %}
+
+{% endblock %}

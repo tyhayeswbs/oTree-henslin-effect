@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Post Experiment Questionnaire
+{% endblock %}
+
+{% block content %}
+    <p>Thank you for your participation.  Please now answer these questions about yourself.</p>
+
+    {% formfield player.age %}
+    {% formfield player.age_prefer_not %}
+    <br>
+    {% formfield player.gender %}
+    {% formfield player.gender_specifics %}
+
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+
+$('.field-gender_specifics').parent().hide();
+
+$('input[name="gender"]').click(function(e){ if(e.target.value == "Other"){ $('.field-gender_specifics').parent().show();} else {$('.field-gender_specifics').parent().hide()}});
+
+document.addEventListener('invalid', (function(){
+      return function(e){
+          console.log(e.target.parentNode);
+            if ( $(e.target.parentNode.parentNode.parentNode).children('.validationError').length < 1){
+          $(e.target.parentNode.parentNode).before("<span class='validationError'>Please input a response</span>");}
+          //prevent the browser from showing default error bubble/ hint
+          e.preventDefault();
+          // optionally fire off some custom validation handler
+          // myvalidationfunction();
+      };
+  })(), true);
+  
+  $('.otree-next-button').click(function(){ $('.validationError').remove();});
+
+
+});
+
+</script>
+{% endblock %}
+
+{% block styles %}
+<style>
+ .validationError {
+    background-color: #FAA;
+    color: #F00;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    display: block;
+    border: solid #F00 1px;
+}
+
+li label {font-weight: normal; }
+
+
+.radio-inline{
+    max-width: 12%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.field-game_theory .radio-inline {
+    max-width: 200px;
+    }
+
+
+/*.form-check-input {position: absolute !important; }*/
+
+.col-form-label {font-weight: bold;}
+
+.otree-btn-next {margin-top: 20px;}
+
+
+
+</style>
+{%endblock%}

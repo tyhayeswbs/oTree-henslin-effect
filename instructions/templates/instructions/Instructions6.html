@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (6/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+        <img src="{% static 'instructions/show result button.png' %}" class="screenshot">
+        <p>
+            When you are ready to view the results of your roll, you can
+            press the button to proceed. (Note that the dice will not be released until you
+            press this button, so you don't need to watch the screen while shaking for fear
+            of missing the results.)
+        </p> 
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main task
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 6.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/6.png' %}");
+</script>
+{% endblock %}

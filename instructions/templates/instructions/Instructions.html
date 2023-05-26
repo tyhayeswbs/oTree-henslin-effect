@@ -1,0 +1,77 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions
+{% endblock %}
+
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'instructions/loading.png' %}" class="screenshot">
+        <p class="carousel-caption d-none d-md-block">
+            The task begins with a loading screen that displays your target
+            for the round.  
+        </p>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'instructions/target.png' %}" class="screenshot">
+        <p class="carousel-caption d-none d-md-block">
+            Once you click on the "begin" button, the trial will begin.
+        </p>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'instructions/shaking.png' %}" class="screenshot">
+        <div class="carousel-caption d-none d-md-block">
+          <p>
+            The 5 second timer will begin as soon as you click the button.
+            During this time you will see a 3D scene showing your dice (<span style="color: purple; font-weight: bold">purple</span>)
+            in the dice cup (<span style="color: skyblue; font-weight: bold">blue</span>) through a semi-opaque lid.  As you shake
+            your phone, energy from your shake will be transferred to the dice
+            and you will see and hear it rattle around the dice cup.
+          </p>
+          <p>
+            You will also see a reminder of your target in the <span style="color: red">top left</span> of the screen
+            and your accumulated winnings so far in the <span style="color: green">top right</span>.
+          </p>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'instructions/shaking.png' %}" class="screenshot">
+        <p class="carousel-caption d-none d-md-block">To indicate the passage of the 5 seconds, there will be 3 audible
+            bleeps - two short and one long.  Once the long bleep is sounds,
+            the 5 seconds has elapsed and the simulation will be suspended.
+            No further shaking after the long bleep will affect the dice on this
+            trial. A button will appear on your screen to continue.
+        </p>
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'instructions/show result button.png' %}" class="screenshot">
+        <p class="carousel-caption d-none d-md-block">
+            When you are ready to view the results of your roll, you can
+            click the button to view the results of your roll.
+        </p> 
+    </div>
+
+    <div class="carousel-item">
+        <img src="{% static 'instructions/result.png' %}" class="screenshot">
+        <p class="carousel-caption d-none d-md-block">If the die lands 
+        with your target number face up, you will receive {{Constants.round_payoff}}
+        added to your total bonus.</p>
+    </div>
+  </div>
+</div>
+    {% next_button %}
+
+{% endblock %}

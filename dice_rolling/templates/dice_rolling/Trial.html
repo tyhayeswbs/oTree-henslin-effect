@@ -1,0 +1,121 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'dice_rolling/main.css' %}">
+<style type="text/css">
+    #target_number_display, #earnings {
+        position: fixed;
+        top: 0;
+        background-color: #CCC;
+        border-radius: 5px;
+       /* font-size: 2em; */
+        padding: 10px;
+        }
+
+
+    #target_number_display { right: 0;}
+    #earnings {left: 0;}
+
+    .toast { width: 80%; 
+             position: absolute;
+             top: 10%;
+             left: 10%;
+             background-color: #cccccc99;
+             padding: 20px;
+             text-align: center;
+             border-radius: 5px;
+            }
+
+    #load_screen_target {font-size: 3em;}
+    .lds-dual-ring {position: absolute;}
+            
+    .hide {pointer-events: none;}
+
+    .debug-info {display: none;}
+</style>
+{% endblock %}
+
+{% block scripts %}
+
+    <script type="text/javascript">
+    const True = true;
+    const False = false;
+
+
+
+    window.staticRoot = "/static/dice_rolling/"
+    window.target = {{player.target}}
+    window.opaque_lid = true;
+    window.dv_scale = {{session.config.dv_scale|default:'undefined'}};
+    window.min_launch_velocity = {{session.config.min_launch_velocity|default:'undefined'}};
+    window.button_before_play_sim = {{session.config.button_before_play_sim}};
+    window.use_textures = {{session.config.use_textures}};
+    window.render_shadows = {{session.config.render_shadows}};
+    window.use_default_launch_parameters = {{session.config.use_default_launch_parameters|default:'undefined'}}
+    window.use_prerecorded_sim = {{session.config.use_prerecorded_sim|default:True}}
+
+    window.send_data = function(){
+        liveSend({"type": "acc_data", "payload": window.readings})
+    }
+
+    window.record_error = function(err){
+        console.log(err)
+        liveSend({"type": "error", "payload": err})
+    }
+
+    function liveRecv(data){
+        window.result = data
+        /*if ( parseInt( data) == {{player.target}} ){
+
+            jQuery('#lose-toast').text("Congratulations, you won!  Good luck for next time")
+        }
+        else
+        {
+            jQuery('#win-toast').text("Sorry, you lost.  Better luck next time")
+        }*/
+        document.dispatchEvent(new Event('serverTrialCoda'))
+    }
+
+    jQuery('.otree-btn-next').on('click',() => console.log("next button clicked"))
+    </script>
+	<script src="{% static 'dice_rolling/index.js'%}" type="module"></script>
+{% endblock %}
+
+
+{% block content %}
+	<div id="app"></div>
+	<div class="overlay show" id="loading">
+		<div class="lds-dual-ring show" id="spinner"></div>
+		<div class="hide" id="loaded">
+			<h2>Loading Complete</h2>
+            <h3>Your target for this trial is:<br/>
+                <span id="load_screen_target">{{player.target}}</span></h3>
+            <button id="startButton" type="button">Begin</button>
+		</div>
+	</div>
+    <div id="earnings">Earnings: <span id="payoff">{{participant.payoff}}</span></div>
+    <div id="play-results-toast" class="toast hide" role="alert" data-autohide="false">
+    
+        <div class="toast-body">Click here to see the results of your roll</div>
+    
+        <button type="button" class="btn btn-primary" id="play-results-button">Continue</button>
+    </div>
+    <div id="target_number_display"><span id="target">Your target: {{player.target}}</span></div>
+    <div id="trial-end-toast" class="toast hide" role="alert">
+    {% if player.result == player.target %}
+        <div class="hide" id="lose-toast">Congratulations, you won!  Good luck for next time</div>
+        <div class="hide" id="win-toast">Congratulations, you won!  Good luck for next time</div>
+    {% else %}
+        <div class="hide" id="lose-toast">Sorry, you lost.  Better luck next time</div>
+        <div class="hide" id="win-toast">Sorry, you lost.  Better luck next time</div>
+    {% endif %}
+        <p>{%next_button%}</p>
+    </div>
+    <input type="hidden" name="final_die_z" />
+    <input type="hidden" name="animation" />
+    <input type="hidden" name="dv" />
+
+{% endblock %}
+

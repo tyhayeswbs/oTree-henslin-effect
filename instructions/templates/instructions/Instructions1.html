@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (1/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+        <small style="margin: auto;">An example of the loading screen:</small>
+        <img src="{% static 'instructions/loading.png' %}" class="screenshot">
+        <p>
+            The task begins with a loading screen while the task loads.  This 
+            may take a bit of time on your first trial, but subsequent trials
+            will load quicker.
+        </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main tas
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 1.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/1.png' %}");
+</script>
+{% endblock %}

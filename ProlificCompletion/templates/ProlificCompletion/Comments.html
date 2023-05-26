@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Comments
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        If you have any comments about the study, please include them here.
+        <br>
+        {% formfield player.feedback %}
+    </p>
+    {% next_button %}
+
+{% endblock %}

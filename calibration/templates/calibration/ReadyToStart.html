@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Ready to Start
+{% endblock %}
+
+{% block content %}
+
+
+    <p>The task will begin on the next page.</p>
+
+    <p> The experiment will save your progress. If you experience technical problems,
+        please try reloading the page before contacting the experimenter.</p>
+        
+    <p> Note that 
+        the first trial may take some time to load, especially if you are not
+        on a wifi network.  Please be patient.</p>
+
+    <p class="alert alert-warning">Please hold your phone carefully, so that 
+    it doesn't slip out of your hand when shaking it.</p>
+
+    {% next_button %}
+
+{% endblock %}

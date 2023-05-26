@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Please answer the questions below
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+
+.col-form-label {
+    font-size: 130%;
+}
+
+.question_block {
+    padding: 40px 0;
+}
+
+.form-group {
+    margin: 0 0 40px;
+}
+
+.form-check-inline {
+    margin: 0 2rem
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<hr>
+    <h4>Thinking about your gambling in general over the last 12 months:</h4>
+    <div class="question_block">
+    {% formfield player.afford_to_lose %}
+    {% formfield player.larger_amounts %}
+    {% formfield player.win_back_losses %}
+    {% formfield player.borrowed_money %}
+    {% formfield player.subjective_gambling_problem %}
+    {% formfield player.health_problems %}
+    {% autoescape off %}
+    {% formfield player.external_gambling_problem %}
+    {% endautoescape %}
+    {% formfield player.financial_problem %}
+    {% formfield player.guilt %}
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

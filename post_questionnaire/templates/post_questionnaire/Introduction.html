@@ -1,0 +1,103 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Qualifying Survey
+{% endblock %}
+
+{% block content %}
+
+    <div class="row" style="justify-content: flex-end">
+    <div class="font-weight-bold">
+        Investigators:
+    </div>
+    <div class="col-10">
+        [REDACTED]
+    </div>
+    </div>
+
+    <br>
+
+    <p>This is a single question survey to screen for eligibility for our studies.</p>
+
+    <p>Your answers will only be used to improve our targetted recruitment for 
+    research studies we conduct which require specific spreads of experience.</p>
+
+    <p>If we intend to use such data in analyses in those studies, we will 
+    ask the questions again during the studies.</p>
+
+    <p>Thank you for your interest in our research.</p>
+
+    <div id="no_consent_warning" class="alert alert-danger" style="display: none;">You have not clicked to indicate your consent to continue.  You must
+    consent to continue with this survey.  If you do not consent, please close your browser window and return the survey on 
+    prolific.</div>
+
+    <div class="form-check">
+    <input class="form-check-input" type="radio" id="consent" name="consent_radio"><label for="consent" class="form-check-label">I have read the above and agree to participate in this survey.</label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" id="no_consent" name="consent_radio"><label class="form-check-label" for="no_consent">I do not agree to participate</label>
+    </div>
+
+
+    {% next_button %}
+
+<div class="card">
+<div class="card card-body">
+
+<p>This qualifying survey is funded by [REDACTED], provided by the [University].</p>
+
+<p>Your participation is completely voluntary. You can withdraw at any time, and for any reason, simply by closing your browser. However, we are only able to pay you if you complete the survey.</p></p>
+
+<p>Data will be securely stored on [Redacted] computers and will be processed only for the purpose of targetting recruitment for other studies.  Access to the data will be restricted to Ty Hayes and Lukasz Walasek. Data will be reviewed after a period of 10 years, in line with the [Redacted] data retention policy.</p>
+
+<p>Please refer to the [Redacted] Research Privacy Notice which is available here: [REDACTED]</p>
+
+
+<p>This qualifying survey has been reviewed and given favourable opinion by the [Redacted]’s Research Ethics Committee, and the Research Ethics Committee at the [Redacted] (code: [Redacted]).</p>
+
+<hr>
+
+<p>Any complaint about the way you have been dealt with during the study or any possible harm you might have suffered will be addressed.  Please address your complaint to the person below, who is a senior [Redacted] official entirely independent of this study:</p>
+
+<p><strong>Head of Research Governance</strong><br>
+Research & Impact Services<br>
+University House<br>
+[Redacted]<br>
+Coventry<br>
+CV4 8UW<br>
+Email: <a href="mailto:researchgovernance@warwick.ac.uk">researchgovernance@warwick.ac.uk</a><br>
+Tel: 024 76 575733</p>
+
+<p>If you wish to raise a complaint on how we have handled your personal data, you can contact our Data Protection Officer and Information and Data Director who will investigate the matter: [REDACTED]</p> 
+
+<p>If you are not satisfied with our response or believe we are processing your personal data in a way that is not lawful you can complain to the Information Commissioner’s Office (ICO).</p>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+  jQuery(".otree-btn-next").off('click').on('click', function(e){
+
+    console.log('custom handler fired')
+
+    if (jQuery('#consent:checked').length != 1){
+        jQuery('#no_consent_warning').show()
+        e.preventDefault()
+    }
+    else {
+    var form = document.createElement("form");
+    
+    form.method = "post"
+
+    document.body.appendChild(form);
+    form.submit(); //Call the renamed function.
+    }
+
+  })
+</script>
+{% endblock %}

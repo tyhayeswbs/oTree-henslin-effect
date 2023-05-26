@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (7/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+        <img src="{% static 'instructions/result.png' %}" class="screenshot">
+        <p>If the die lands 
+        with your target number face up, you will receive {{Constants.round_payoff}}
+        added to your total bonus.</p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main task
+var audio = new Audio("{% static 'dice_rolling/sounds/short_bleep.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/wood texture.jpg' %}");
+</script>
+{% endblock %}

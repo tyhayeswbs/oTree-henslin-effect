@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Adjust Sound Levels
+{% endblock %}
+
+{% block content %}
+
+
+    <p>This experiment involves audio cues and feedback.</p>
+
+    <p>Remember that you will be shaking your phone to roll the dice,
+    so wired headphones are inadvisable.  Please use the phone's
+    loudspeaker, or wireless headphones/earbuds.</p>
+
+    <p>Please adjust the sound levels of your device so
+    that you can comfortably hear the sounds in the clip below.</p>
+
+        <audio controls>
+            <source src="{% static 'calibration/audio_test.mp3'%}" type="audio/mpeg" />
+        </audio>
+
+    {% if request.user_agent.os.family == "iOS" %}
+    <div class="alert alert-warning">Please ensure any physical "mute" or "silent mode" switch
+    on your device is not activated, even if you can hear the above sample.</div>
+    {% endif %}
+    {% next_button %}
+
+{% endblock %}

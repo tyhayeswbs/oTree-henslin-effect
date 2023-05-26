@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Please Disable Screen Rotation
+{% endblock %}
+
+{% block content %}
+
+    <p>Since this experiment involves shaking your phone to roll a dice,
+    automatic screen rotation is likely to happen frequently and may
+    prevent you from seeing the results of a trial.</p>
+
+    <p>Please take this opportunity to lock your screen rotation in 
+    portrait mode / disable automatic rotation.</p>
+
+    {% next_button %}
+
+{% endblock %}

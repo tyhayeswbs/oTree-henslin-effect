@@ -1,0 +1,121 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Gambling/Casino Games Experience
+{% endblock %}
+
+{% block content %}
+
+
+    <p><strong>Have you gambled at all in the past 12 months?</strong> <br/>    
+    This includes spending your own money on any of the following.</br>
+    Choose all that apply.
+    </p>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="baccarat" value=True type="checkbox" class="form-check-import" {% if player.baccarat %} checked{%endif%}> Baccarat
+        </label>
+        {% if form.baccarat.errors %}<div class="alert alert-danger">{{ form.baccarat.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="blackjack" value=True type="checkbox" class="form-check-import" {% if player.blackjack %} checked{%endif%}> Blackjack
+        </label>
+        {% if form.blackjack.errors %}<div class="alert alert-danger">{{ form.blackjack.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="bingo" value=True type="checkbox" class="form-check-import" {% if player.bingo %} checked{%endif%}> Bingo  
+        </label>
+        {% if form.bingo.errors %}<div class="alert alert-danger">{{ form.bingo.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="craps" value=True type="checkbox" class="form-check-import" {% if player.craps %} checked{%endif%}> Craps        
+        </label>
+        {% if form.craps.errors %}<div class="alert alert-danger">{{ form.craps.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="lottery" value=True type="checkbox" class="form-check-import" {% if player.lottery %} checked{%endif%}> Lottery
+        </label>
+        {% if form.lottery.errors %}<div class="alert alert-danger">{{ form.lottery.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="pachinko" value=True type="checkbox" class="form-check-import" {% if player.pachinko %} checked{%endif%}> Pachinko
+        </label>
+        {% if form.pachinko.errors %}<div class="alert alert-danger">{{ form.pachinko.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="poker" value=True type="checkbox" class="form-check-import" {% if player.poker %} checked{%endif%}> Poker
+        </label>
+        {% if form.poker.errors %}<div class="alert alert-danger">{{ form.poker.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="sports_book" value=True type="checkbox" class="form-check-import" {% if player.sports_book %} checked{%endif%}> Race and Sports Book
+        </label>
+        {% if form.sports_book.errors %}<div class="alert alert-danger">{{ form.sports_book.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="roulette" value=True type="checkbox" class="form-check-import" {% if player.roulette %} checked{%endif%}> Roulette
+        </label>
+        {% if form.roulette.errors %}<div class="alert alert-danger">{{ form.roulette.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="slots" value=True type="checkbox" class="form-check-import" {% if player.slots %} checked{%endif%}> Slots
+        </label>
+        {% if form.slots.errors %}<div class="alert alert-danger">{{ form.slots.errors.0 }}</div>{% endif %}
+    </div>
+
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="video_poker" value=True type="checkbox" class="form-check-import" {% if player.video_poker %} checked{%endif%}> Video Poker
+        </label>
+        {% if form.video_poker.errors %}<div class="alert alert-danger">{{ form.video_poker.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="virtual_sports" value=True type="checkbox" class="form-check-import" {% if player.virtual_sports %} checked{%endif%}> Virtual Sports Betting
+        </label>
+        {% if form.virtual_sports.errors %}<div class="alert alert-danger">{{ form.virtual_sports.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input name="none_above" value=True type="checkbox" class="form-check-import" {% if player.none_above %} checked{%endif%}> None of the above
+        </label>
+        {% if form.none_above.errors %}<div class="alert alert-danger">{{ form.none_above.errors.0 }}</div>{% endif %}
+    </div>
+
+
+
+    <br />
+    {% next_button %}
+
+{% endblock %}

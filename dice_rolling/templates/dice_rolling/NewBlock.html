@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    New Block
+{% endblock %}
+
+{% block content %}
+
+    <p>You are now starting a new block of {{Constants.trials_per_target}} dice rolls. Your target
+    for the next {{Constants.trials_per_target}} rolls will be:</p>
+
+    <p style="font-size: 4em; font-weight: bold; text-align: center;">{{player.target}}</p>
+
+    <p class="alert alert-warning">Please hold your phone carefully, so that 
+    it doesn't slip out of your hand when shaking it.</p>
+
+    <p>Click next when you are ready to begin.</p>
+
+    {% next_button %}
+
+{% endblock %}

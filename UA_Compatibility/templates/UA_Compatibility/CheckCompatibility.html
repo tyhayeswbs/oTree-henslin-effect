@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Compatibility Check
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript" src="{% static "UA_Compatibility/acc_test.js" %}"></script>
+{% endblock %}
+
+{% block styles %}
+
+<style type="text/css">
+.hide {display: none;}
+</style>
+
+{% endblock %}
+
+{% block content %}
+    {% if compatibility  %}
+
+        <div id="testsRunning">
+            Testing compatibility...
+            <button type="button" id="testAccelerometerAccessButton" class="btn btn-primary hide">Test Accelerometer Access</button>
+        </div>
+        <div id="needAccPermissionAndroid" class="hide">
+        The experiment needs permission to access your phone's accelerometer.  To allow the access:
+        <ul>
+            <li>Click on the three dots (&#8942;) menu </li>
+            <li>Open Settings (&#x2699;) </li>
+            <li>Scroll down to "Site Settings"</li>
+            <li>Open the "Motion sensors" settings</li>
+            <li>Change the slider to on ("Allow sites to access motion sensors")</li>
+        </ul>
+
+        Once you have allowed the site access to your motion sensors, please refresh this page.
+
+        </div>
+        <div id="passAll" class="hide">
+        Your device passes the compatibility checks.  
+        {% next_button %}
+        </div>
+        <div id="fail" class="hide">
+        Sorry, the device you have accessed this study from is not compatible with the study. The experiment has been unable to access
+        the accelerometer on this device.  If you have another suitable (mobile) device to access this study from, please try accessing
+        from that. 
+        </div>
+    {% else %}
+        
+        {% if not mobile %}
+        Sorry, the device you have accessed this study from is not compatible with the study. You must use a smartphone for this study.
+        {% endif %}
+
+        {% if firefox|default:False %}
+        Sorry, this experiment is not compatible with Firefox.  Please access the experiment from the {% if os == "iOS" %} Safari {% else %}Chrome{% endif %} browser.
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Study Completed
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Thank you again for your responses.
+    </p>
+
+    <p>
+    If your responses indicate you have experience relevant to our studies, they appear in your list of available studies as normal. Studies for which your indicated experience 
+    does not meet our recruitment criteria will not appear.
+    </p>
+
+    <p>
+    We are aware that talking about gambling can be a personal and sensitive topic. For help, support and advice on gambling please contact the National Council on Problem Gambling Helpline on 1-800-522-4700 or on <a href="https://www.ncpgambling.org/help-treatment/chat/" target="_blank">their website</a> (opens in a new tab). 
+    </p>
+
+ 
+        <p>Your completion code for this qualifying survey is {{completion_code}}.  Please the completion link below to automatically be returned to prolific.</p>
+
+
+        <br><a href="https://app.prolific.co/submissions/complete?cc={{completion_code}}">Return to Prolific</a> 
+    </p>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (4/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+span.legend { background-color: #999; padding: 0 3px; border-radius: 3px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+        <img src="{% static 'instructions/shaking-labelled.png' %}" class="screenshot">
+          <p>
+            You will also see a reminder of your target in the <span class="legend" style="color: red">top right</span> of the screen
+            and your accumulated winnings so far in the <span class="legend" style="color: yellow;">top left</span>.
+          </p>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main task
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 4.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/4.png' %}");
+</script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions(2/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+        <img src="{% static 'instructions/target.png' %}" class="screenshot">
+        <p>
+            After the task has loaded, you will see your target for the round
+            displayed above the "begin" button.
+            Once you click on the button, the trial will begin.
+        </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main tas
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 2.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/2.png' %}");
+</script>
+{% endblock %}

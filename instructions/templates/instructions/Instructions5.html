@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Instructions (5/7)
+{% endblock %}
+
+{% block styles %}
+<style type="text/css">
+img.screenshot { max-width: 90%; max-height: 90%; display: block; margin: auto; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+        <audio controls>
+            <source src="{% static 'instructions/instruction_audio.mp3'%}" type="audio/mpeg" />
+        </audio>
+
+        <p>To indicate the passage of the 5 seconds, there will be 3 audible
+            bleeps - two short and one long.  Once the long bleep sounds,
+            the 5 seconds has elapsed and the simulation will be suspended.
+            No further shaking after the long bleep will affect the dice on this
+            trial. A button will appear on your screen to continue.
+        </p>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main task
+var audio = new Audio("{% static 'dice_rolling/sounds/dice sound 5.mp3' %}");
+var audio = new Audio("{% static 'dice_rolling/img/5.png' %}");
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    <h4>Thinking about your gambling in general over the last 12 months:</h4>
+{% endblock %}
+
+{% block content %}
+
+    <div class="question_block">
+    {% autoescape off %}
+    {% formfields %}
+    {% endautoescape %}
+
+    {% next_button %}
+
+{% endblock %}

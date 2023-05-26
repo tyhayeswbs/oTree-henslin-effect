@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you, all done. Your input has been saved.
+{% endblock %}
+
+{% block content %}
+
+    <div id="divOutro" class="divText">
+            <p>The completion code for this task is <b>{{prolific_completion_code}}</b>. Please make a note of it now. You will need it to get paid. You will be paid within 72 hours.</p>
+
+            <p>To go back to Prolific Academic, please <a href="https://app.prolific.co/submissions/complete?cc={{prolific_completion_code}}">click here</a>. This link will redirect you back to Prolific Academic and supply them with the completion code automatically.</p>
+
+            <p>If you have any queries, please contact Dr. Leonardo Weiss-Cohen (l.w.cohen@leeds.ac.uk) or Dr. Lukasz Walasek (l.walasek@warwick.ac.uk) at any point.</p>
+
+            <p id="pHelp" class="">We are aware that reflecting on your past gambling experiences can be a personal and sensitive topic. For help, support and advice about problem gambling please contact the National Gambling Helpline on 0808 8020 133 or by clicking <a target="_blank" href="https://www.gamcare.org.uk/frontline-services/netline">here</a>.</p>
+
+    {% if gamcare_referral  %}
+
+    <p>You indicated earlier that you would like to be given more information about Gamcare's support services.  Clicking the above link back to prolific will also open a new window for Gamcare's website.</p>
+
+    <script type="text/javascript">
+    jQuery('#completion_link').on('click', function(e){window.open('https://gamcare.org.uk'); });
+    </script>
+
+    {% endif %}
+        </div>
+
+    {% next_button %}
+{% endblock %}
+
+

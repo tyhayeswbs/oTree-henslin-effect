@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Task Overview
+{% endblock %}
+
+{% block content %}
+
+    <p>You will be playing a virtual dice rolling game.</p>
+    
+    <p>The task consists of shaking your phone to roll
+    the virtual dice. Each round you will be given a target number from 1 to 6.
+    If the dice you roll lands on your target number, you will
+    receive {{Constants.round_payoff}} for that round.</p>
+
+    <p>Your shaking will be recorded from the accelerometer
+    on your phone. After 5 seconds of shaking, the game will
+    automatically pause, and a button will appear.  When you press
+    this button, you will see the dice released 
+    and rolled onto the dice table with a speed 
+    proportional to how hard you shook your phone.</p>
+
+    {% next_button %}
+
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+//preload and cache resources for the main tas
+var audio = new Audio("{% static 'dice_rolling/sounds/long_bleep.mp3' %}");
+var img = new Img("{%static 'dice_rolling/img/skybox1.jpg' %}"};
+</script>
+{% endblock %}
